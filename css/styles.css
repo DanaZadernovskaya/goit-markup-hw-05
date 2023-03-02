@@ -130,6 +130,10 @@ nav {
 
   content: "";
 }
+.links:hover,
+.links:focus {
+  color: var(--pressed-state);
+}
 /*contacts*/
 .contacts {
   font-size: 16px;
@@ -197,7 +201,8 @@ h1 {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.order-button:hover {
+.order-button:hover,
+.order-button:focus {
   background-color: var(--pressed-state);
 }
 .visually-hidden {
@@ -325,13 +330,13 @@ h2 {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.social-link-item:hover {
+.social-link-item:hover,
+.social-link-item:focus {
   background-color: var(--pressed-state);
 }
 /*section5*/
 #section5 {
-  padding-top: 130px;
-  margin-bottom: 120px;
+  padding: 120px 0;
 }
 .customers-list {
   justify-content: center;
@@ -354,8 +359,13 @@ h2 {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.customer-link:hover {
+.customer-item:hover .customer-link,
+.customer-item:focus .customer-link {
   color: var(--pressed-state);
+}
+.customer-item:hover,
+.customer-item:focus {
+  border-color: var(--pressed-state);
 }
 .customer-link {
   fill: currentColor;
@@ -393,7 +403,8 @@ footer .social-link-item {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   background-color: rgba(255, 255, 255, 0.1);
 }
-footer .social-link-item:hover {
+footer .social-link-item:hover,
+footer .social-link-item:focus {
   background-color: var(--success);
 }
 /*PORTFOLIO*/
@@ -432,7 +443,8 @@ footer .social-link-item:hover {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.optins-button:hover {
+.optins-button:hover,
+.optins-button:focus {
   background-color: var(--pressed-state);
   color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
@@ -454,7 +466,8 @@ footer .social-link-item:hover {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.work-item:hover {
+.work-item:hover,
+.work-item:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
@@ -499,7 +512,8 @@ footer .social-link-item:hover {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.work-item:hover .overlay {
+.work-item:hover .overlay,
+.work-item:focus .overlay {
   transform: translateY(0%);
   opacity: 1;
 }
@@ -515,9 +529,15 @@ footer .social-link-item:hover {
   height: 100%;
   width: 100%;
   background-color: rgba(46, 47, 66, 0.4);
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .backdrop.is-hidden {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 .modal {
   position: relative;
@@ -550,10 +570,12 @@ footer .social-link-item:hover {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
-.close-button:hover {
+.close-button:hover,
+.close-button:focus {
   background-color: var(--pressed-state);
   color: white;
 }
-.close-button:hover svg {
+.close-button:hover svg,
+.close-button:focus svg {
   fill: white;
 }
