@@ -8,12 +8,15 @@
   --primary-brand: #4d5ae5;
   --dark: #2e2f42;
   --light: #f4f4fd;
+  --light-state: #8e8f99;
   --text: #434455;
   --accent: #e7e9fc;
   --pressed-state: #404bbf;
   --subtle-text: #8e8f99;
   --success: #31d0aa;
   --modal-background: #fcfcfc;
+  --privacy-policy: #757575;
+  --transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 body {
   background-color: white;
@@ -115,6 +118,7 @@ nav {
   position: relative;
   text-decoration-line: none;
   padding: 24px 0;
+  transition: var(--transition-dur-and-func);
 }
 .links.current {
   color: var(--pressed-state);
@@ -197,9 +201,7 @@ h1 {
   color: white;
   padding: 0;
   border: 0;
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--transition-dur-and-func);
 }
 .order-button:hover,
 .order-button:focus {
@@ -326,9 +328,7 @@ h2 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--transition-dur-and-func);
 }
 .social-link-item:hover,
 .social-link-item:focus {
@@ -345,31 +345,22 @@ h2 {
   display: flex;
 }
 .customer-item {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.customer-link:hover,
+.customer-link:focus {
+  color: var(--pressed-state);
+}
+.customer-link {
+  padding: 16px;
   fill: currentColor;
   color: var(--subtle-text);
   border: 1px solid currentColor;
   border-radius: 4px;
-  display: flex;
-  height: 88px;
-  width: 168px;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition-property: border-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-.customer-item:hover .customer-link,
-.customer-item:focus .customer-link {
-  color: var(--pressed-state);
-}
-.customer-item:hover,
-.customer-item:focus {
-  border-color: var(--pressed-state);
-}
-.customer-link {
-  fill: currentColor;
-  color: var(--subtle-text);
   transition-property: fill, color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -461,13 +452,13 @@ footer .social-link-item:focus {
 .work-item {
   flex-basis: calc((100% - 52px) / 3);
   background: white;
-  cursor: pointer;
-  transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.work-item:hover,
-.work-item:focus {
+.work-item a {
+  cursor: pointer;
+  transition: box-shadow var(--transition-dur-and-func);
+}
+.work-item a:hover,
+.work-item a:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
@@ -512,8 +503,8 @@ footer .social-link-item:focus {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.work-item:hover .overlay,
-.work-item:focus .overlay {
+.work-item a:hover .overlay,
+.work-item a:focus .overlay {
   transform: translateY(0%);
   opacity: 1;
 }
@@ -550,6 +541,7 @@ footer .social-link-item:focus {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }
+
 .close-button {
   display: flex;
   justify-content: center;
@@ -578,4 +570,132 @@ footer .social-link-item:focus {
 .close-button:hover svg,
 .close-button:focus svg {
   fill: white;
+}
+/*--------------Modal Content-----------------------------*/
+.modal-content {
+  padding: 72px 24px 24px 24px;
+}
+.modal-title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin-bottom: 16px;
+  color: var(--dark);
+}
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+}
+.form-field {
+  margin-bottom: 8px;
+  color: var(--light-state);
+}
+.input-container {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.modal-form-input {
+  width: 100%;
+  height: 40px;
+  padding-left: 38px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  transition: border-color var(--transition-dur-and-func);
+}
+.modal-form-input:focus {
+  outline: none;
+  border-color: var(--primary-brand);
+}
+.modal-form-input-icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translate(0, -50%);
+  transition: fill var(--transition-dur-and-func);
+}
+.modal-form-input:focus + .modal-form-input-icon {
+  fill: var(--primary-brand);
+}
+.modal-message {
+  resize: none;
+  width: 100%;
+  height: 120px;
+  padding-top: 8px 16px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  transition: border-color var(--transition-dur-and-func);
+}
+.modalmessage::placeholder {
+  font-family: "Roboto";
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: rgba(117, 117, 117, 0.5);
+}
+.modal-message:focus {
+  outline: none;
+  border-color: var(--primary-brand);
+}
+.modal-check:checked + .modal-form-check-description::before {
+  background-image: url(../images/submit.svg);
+  background-position: center;
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.modal-check:focus + .modal-form-check-description::before {
+  border-color: var(--primary-brand);
+}
+
+.modal-form-check-description {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  color: var(--privacy-policy);
+}
+
+.modal-form-check-description::before {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border: 1.25px solid #2e2f42;
+  border-radius: 2px;
+  cursor: pointer;
+  content: "";
+}
+
+.form-check-description-link {
+  color: #4d5ae5;
+}
+
+.form-check-description-link:focus {
+  outline: 1px solid var(--primary-brand);
+}
+
+.submit-button {
+  align-self: center;
+  min-width: 169px;
+  padding: 13px 32px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background-color: var(--primary-brand);
+  transition: background-color var(--transition-dur-and-func);
+}
+.submit-button:hover,
+.submit-button:focus {
+  background-color: var(--accent);
 }
